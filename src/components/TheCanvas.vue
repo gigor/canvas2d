@@ -117,8 +117,6 @@ const handleMouseMove = (e: MouseEvent) => {
 };
 
 const handleDelKey = (e: KeyboardEvent) => {
-    console.log(e);
-
     if (e.target === document.body && (e.key === 'Delete' || e.key === 'Backspace')) {
         layers.deleteSelectedLayers();
     }

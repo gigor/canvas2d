@@ -75,8 +75,6 @@ export const useLayersStore = defineStore('layers', () => {
     };
 
     const updateSelectedLayers = (data: LayerData) => {
-        console.log('updateSelectedLayers', data);
-
         layers.forEach((l) => {
             if (l.selected) {
                 Object.assign(l, data);

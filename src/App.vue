@@ -9,7 +9,6 @@ import TheButton from './components/TheButton.vue';
 const layers = useLayersStore();
 
 const handleAddRectangle = () => {
-    // console.log("addRectangle")
     theCanvas.value?.addRectangle();
 };
 
