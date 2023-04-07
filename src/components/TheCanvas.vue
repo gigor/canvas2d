@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, onUnmounted, ref, watch } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import random from '../utils/random';
 import { useLayersStore, useSelectedLayerStore } from '@/stores/layers';
 
