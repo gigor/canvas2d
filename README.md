@@ -1,7 +1,7 @@
 # What is it
 Just a test task that allows creating, dragging & resizing of rectangles on an HTML5 Canvas
 
-[Live Demo]()
+[Live Demo](https://aquamarine-paprenjak-0547dd.netlify.app/)
 
 # How does it work
 Information about layers is stored in Pinia Store, including selected status.
