@@ -1,25 +1,31 @@
-# canvas2d
+# What is it
+Just a test task that allows creating, dragging & resizing of rectangles on an HTML5 Canvas
 
-This template should help get you started developing with Vue 3 in Vite.
+[Live Demo]()
 
-## Recommended IDE Setup
+# How does it work
+Information about layers is stored in Pinia Store, including selected status.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+There are two canvases: one for selected layers (`canvasOverlay`) and the other for all the others(`canvas`). 
 
-## Type Support for `.vue` Imports in TS
+When the “New Layer” button is clicked
+- A layer with the type  `rectangle`  is added to the store  `layers`  with random width & height on a random position within a visible area of the canvas
+- Canvases are redrawn
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+When a layer is selected:
+- Its state `selected`  is changed to true;
+- Canvases are redrawn
+- coordinates of the first selected layer are saved to the store `selectedLayer`
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+When a layer is dragged:
+- The `canvasOverlay` is moved with CSS transform.
+- The store `selectedLayer` is updated by delta movement.
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+When a layer is dropped:
+- The coordinates for all selected layers are changed in the store by the difference in mouse positions between the drag start and drag end.
+- Canvases are redrawn
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+This approach gives the best performance possible without significantly decreasing speed, even if there are thousands of layers.
 
 ## Project Setup
 
